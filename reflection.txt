@@ -1,0 +1,26 @@
+Name:
+Bronco ID:
+
+1. In this project, which parameters are passed by value and which are passed
+   by reference? Explain why findExtremes uses reference parameters.
+
+Answer:
+
+
+2. What can access analysisCount? How does the anonymous namespace affect its
+   scope? What is its storage duration?
+
+Answer:
+
+
+3. Why must the pointer returned by copyWithOffset be released with delete[]?
+   What would happen if it were not released?
+
+Answer:
+
+
+4. How does the std::unique_ptr<double[]> returned by copyWithOffsetRAII make
+   ownership clearer and reduce the risk of a memory leak or dangling pointer?
+
+Answer:
+
