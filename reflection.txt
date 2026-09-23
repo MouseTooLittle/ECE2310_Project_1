@@ -1,26 +1,37 @@
-Name:
-Bronco ID:
+Name: Jason Chiem
+Bronco ID: 018669651
 
 1. In this project, which parameters are passed by value and which are passed
    by reference? Explain why findExtremes uses reference parameters.
 
-Answer:
+Answer: Parameters such as size, offset, low, high, and value are passed by 
+value versus name and minimum or maximum in findExtremes. The reason behind this is because
+findExtremes needs to return 2 values when a function can only typically do 1.
+So the way around this limitation is to write directly to the variable.
 
 
 2. What can access analysisCount? How does the anonymous namespace affect its
    scope? What is its storage duration?
 
-Answer:
+Answer: Only files within sensor_tools.cpp are able to access analysisCount 
+due to the anonymous scope being inside of sensor namespace. With it being 
+like that, it privates analysisCount and makes it unreadable outside of 
+sensor_tools. Its storage duration then becomes persistent for the program's life. 
 
 
 3. Why must the pointer returned by copyWithOffset be released with delete[]?
    What would happen if it were not released?
 
-Answer:
+Answer: The reason that the pointer returned by copyWithOffset needs to be
+released is because it was put into heap without RAII. By doing that, the
+memory would leak due to never being cleared.
 
 
 4. How does the std::unique_ptr<double[]> returned by copyWithOffsetRAII make
    ownership clearer and reduce the risk of a memory leak or dangling pointer?
 
-Answer:
+Answer: Using unique_ptr makes the ownership clearer by tying it with an object. 
+This object has a property of automatically deleting itself when leaving scope
+preventing a memory leak. It also doesn't create a dangling pointer by not 
+having an raw address and instead uses an object.
 
