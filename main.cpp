@@ -7,11 +7,11 @@
 int main() {
     std::string stationName;
     std::cout << "Station name: ";
-    // TODO 1: Read the complete station name using std::getline.
+    std::getline(std::cin, stationName);
 
     int size = 0;
     std::cout << "Number of readings (1-20): ";
-    // TODO 2: Read the number of readings.
+    std::cin >> size;
 
     if (size < 1 || size > sensor::MAX_READINGS) {
         std::cout << "Invalid number of readings.\n";
@@ -20,11 +20,13 @@ int main() {
 
     double readings[sensor::MAX_READINGS];
     std::cout << "Enter " << size << " readings:\n";
-    // TODO 3: Use a loop to read size values into readings.
+    for (int i = 0; i < size; i++) {
+        std::cin >> readings[i];
+    }
 
     double offset = 0.0;
     std::cout << "Calibration offset: ";
-    // TODO 4: Read the calibration offset.
+    std::cin >> offset;
 
     const double mean = sensor::average(readings, size);
     double minimum;
@@ -48,9 +50,9 @@ int main() {
               << sensor::getAnalysisCount() << '\n';
 
     // TODO 5: Release the raw dynamically allocated array.
-
+    delete[] adjusted;
     // TODO 6: Set adjusted to nullptr so it does not remain dangling.
-
+    adjusted = nullptr;
     // Do not delete safeCopy. RAII releases that array automatically.
     return 0;
 }
